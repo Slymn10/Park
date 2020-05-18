@@ -59,7 +59,7 @@ class SignupVC: UIViewController {
       }
    }
 
-   //MARK: - Helpers
+   //MARK: - Helper Functions
    func configureUI() {
       view.addSubview(titleLabel)
       titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 10)
@@ -79,6 +79,7 @@ class SignupVC: UIViewController {
       view.addSubview(stack)
       stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
    }
+
 
    //MARK: - Selectors
    @objc func handleSignup() {
