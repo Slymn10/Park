@@ -15,6 +15,8 @@ private let annotationIdentifier = "ParkAnno"
 class HomeVC: UIViewController{
 
    //MARK: - Properties
+
+   //Back button for removing polylines
    private let actionButton: UIButton = {
       let button = UIButton(type: .system)
     button.setImage(#imageLiteral(resourceName: "baseline_arrow_back_black_36dp-2").withTintColor(.systemPink, renderingMode: .alwaysOriginal), for: .normal)
@@ -25,12 +27,14 @@ class HomeVC: UIViewController{
    private let mapView = MKMapView()
    private var route: MKRoute?
    private let locationManager = LocationHandler.shared.locationManager
+
    //MARK: - Lifecycle
    override func viewDidLoad() {
       super.viewDidLoad()
       enableLocationServices()
       configureMapView()
       fetchParks()
+      //Alpha is zero at first.Because in the beginning there is no polyline.
       actionButton.alpha = 0
     view.addSubview(actionButton)
     actionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +55,7 @@ class HomeVC: UIViewController{
       mapView.showsUserLocation = true
       mapView.userTrackingMode = .follow
    }
+    //Fetches park location and shows them on the mapView.
    func fetchParks() {
       guard let location = locationManager?.location else { return }
       Service.shared.fetchParks(location: location) { (park) in
@@ -76,7 +81,7 @@ class HomeVC: UIViewController{
 
       }
    }
-
+    //Removes polylines from the mapView
    func removeAnnotationsAndOverlays() {
       self.mapView.annotations.forEach { (annotation) in
          if let anno = annotation as? MKPointAnnotation {
@@ -89,6 +94,8 @@ class HomeVC: UIViewController{
    }
 
    //MARK: - Selectors
+
+    //When actionButton pressed, polylines on the map will be removed.
    @objc func actionButtonPressed() {
     self.actionButton.alpha = 0
       self.removeAnnotationsAndOverlays()
@@ -109,7 +116,7 @@ extension HomeVC: MKMapViewDelegate{
       self.generatePolyline(toDestination: destination)
    }
 
-    //Adding annotation for available park location
+    //Adding annotations for available park location
    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
       if let annotation = annotation as? ParkAnnotation {
          let view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
@@ -118,6 +125,8 @@ extension HomeVC: MKMapViewDelegate{
       }
       return nil
    }
+
+    //Polyline style
    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
       if let route = self.route {
          let polyline = route.polyline
@@ -128,6 +137,8 @@ extension HomeVC: MKMapViewDelegate{
       }
       return MKOverlayRenderer()
    }
+
+    //This generates polylines from source(current location) to destination.
    func generatePolyline(toDestination destination: MKMapItem) {
       let request = MKDirections.Request()
       request.source = MKMapItem.forCurrentLocation()
@@ -142,6 +153,8 @@ extension HomeVC: MKMapViewDelegate{
          self.mapView.addOverlay(polyline)
       }
    }
+
+    //This puts dummy data to firebase.That was a one time thing.
    func putLocations() {
       let uid = UUID().uuidString
       guard let location = self.location else { return }
@@ -163,6 +176,7 @@ extension HomeVC: MKMapViewDelegate{
 
 //MARK: - Location Services
 extension HomeVC {
+    //This requires permission for user location.
    func enableLocationServices() {
       switch CLLocationManager.authorizationStatus() {
       case .notDetermined:
