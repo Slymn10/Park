@@ -16,11 +16,11 @@
 		2C2854F62471BF6F007F6A57 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2854F52471BF6F007F6A57 /* LocationHandler.swift */; };
 		2C2854F82471BFB1007F6A57 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2854F72471BFB1007F6A57 /* Extensions.swift */; };
 		2C2854FA2471D6C4007F6A57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C2854F92471D6C4007F6A57 /* GoogleService-Info.plist */; };
-		2C69FB012472C0B5002889ED /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C69FB002472C0B5002889ED /* AuthButton.swift */; };
 		2CC96A392471D8EC007363B7 /* ParkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC96A382471D8EC007363B7 /* ParkAnnotation.swift */; };
 		2CC96A3C2471DA84007363B7 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC96A3B2471DA84007363B7 /* Service.swift */; };
 		2CC96A3E2471F4B1007363B7 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC96A3D2471F4B1007363B7 /* Park.swift */; };
 		2CD107AA2472AB8B0088E5DA /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD107A92472AB8B0088E5DA /* SignupVC.swift */; };
+		2CD3E2EF2472EEB500500646 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3E2EE2472EEB500500646 /* ActionButton.swift */; };
 		5D0E0013F925C97C7DD745D9 /* Pods_Park.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF7AE1E19B7908340F2BF46 /* Pods_Park.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,11 +36,11 @@
 		2C2854F52471BF6F007F6A57 /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		2C2854F72471BFB1007F6A57 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2C2854F92471D6C4007F6A57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2C69FB002472C0B5002889ED /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		2CC96A382471D8EC007363B7 /* ParkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkAnnotation.swift; sourceTree = "<group>"; };
 		2CC96A3B2471DA84007363B7 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		2CC96A3D2471F4B1007363B7 /* Park.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		2CD107A92472AB8B0088E5DA /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		2CD3E2EE2472EEB500500646 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		34841554D548ACA25D51DDC9 /* Pods-Park.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park.debug.xcconfig"; path = "Target Support Files/Pods-Park/Pods-Park.debug.xcconfig"; sourceTree = "<group>"; };
 		6C9BFB6AA017983F846D3E72 /* Pods-Park.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park.release.xcconfig"; path = "Target Support Files/Pods-Park/Pods-Park.release.xcconfig"; sourceTree = "<group>"; };
 		EAF7AE1E19B7908340F2BF46 /* Pods_Park.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Park.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +107,7 @@
 		2C69FAFF2472C0A3002889ED /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C69FB002472C0B5002889ED /* AuthButton.swift */,
+				2CD3E2EE2472EEB500500646 /* ActionButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C2854F82471BFB1007F6A57 /* Extensions.swift in Sources */,
-				2C69FB012472C0B5002889ED /* AuthButton.swift in Sources */,
 				2CC96A3C2471DA84007363B7 /* Service.swift in Sources */,
 				2C2854E52471BE5E007F6A57 /* HomeVC.swift in Sources */,
 				2CD107AA2472AB8B0088E5DA /* SignupVC.swift in Sources */,
@@ -281,6 +280,7 @@
 				2C2854E32471BE5E007F6A57 /* SceneDelegate.swift in Sources */,
 				2CC96A392471D8EC007363B7 /* ParkAnnotation.swift in Sources */,
 				2C2854F62471BF6F007F6A57 /* LocationHandler.swift in Sources */,
+				2CD3E2EF2472EEB500500646 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

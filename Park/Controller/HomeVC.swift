@@ -12,7 +12,7 @@ import MapKit
 import UIKit
 
 private let annotationIdentifier = "ParkAnno"
-class HomeVC: UIViewController, MKMapViewDelegate {
+class HomeVC: UIViewController{
 
    //MARK: - Properties
    private let actionButton: UIButton = {
@@ -40,8 +40,7 @@ class HomeVC: UIViewController, MKMapViewDelegate {
         actionButton.heightAnchor.constraint(equalToConstant: 30),
         actionButton.widthAnchor.constraint(equalToConstant: 30)
     ])
-//    putLocations()
-//    putLocations()
+
    }
 
    //MARK: - Helper Functions
@@ -93,13 +92,13 @@ class HomeVC: UIViewController, MKMapViewDelegate {
    @objc func actionButtonPressed() {
     self.actionButton.alpha = 0
       self.removeAnnotationsAndOverlays()
-      //self.mapView.showAnnotations(mapView.annotations, animated: true)
    }
 
 
 }
 //MARK: - MKMapViewDelegate
-extension HomeVC {
+extension HomeVC: MKMapViewDelegate{
+    //Trigger generatePolyline function which creates polylines
    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     if self.actionButton.alpha == 0{
         self.actionButton.alpha = 1
@@ -109,6 +108,8 @@ extension HomeVC {
       let destination = MKMapItem(placemark: MKPlacemark(coordinate: view.annotation!.coordinate))
       self.generatePolyline(toDestination: destination)
    }
+
+    //Adding annotation for available park location
    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
       if let annotation = annotation as? ParkAnnotation {
          let view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)

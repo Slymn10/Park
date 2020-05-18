@@ -1,5 +1,5 @@
 //
-//  AuthButton.swift
+//  ActionButton.swift
 //  Park
 //
 //  Created by Süleyman Koçak on 18.05.2020.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class AuthButton: UIButton {
-
+class ActionButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 5

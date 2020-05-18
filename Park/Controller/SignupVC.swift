@@ -10,7 +10,9 @@ import UIKit
 import iOSDropDown
 
 class SignupVC: UIViewController {
-   private let dropDown = DropDown()  // set frame
+
+   //MARK: - Properties
+   private let dropDown = DropDown()
    private var viewWidth: CGFloat!
    private var viewHeight: CGFloat!
    private let titleLabel: UILabel = {
@@ -28,49 +30,40 @@ class SignupVC: UIViewController {
    private let fullnameTextField: UITextField = {
       return UITextField().textField(withPlaceholder: "Ad Soyad")
    }()
-   private let signupButton: AuthButton = {
-      let button = AuthButton(type: .system)
+   private let goInsideButton: ActionButton = {
+      let button = ActionButton(type: .system)
       button.setTitle("Go Inside", for: .normal)
       button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
       return button
    }()
+
+   //MARK: - Lifecycle
    override func viewDidLoad() {
       super.viewDidLoad()
       navigationController?.navigationBar.isHidden = true
       configureUI()
+
+      //These codes reaches screen size for responsivity
       viewWidth = view.frame.width
       viewHeight = view.frame.height
-      dropDown.arrowColor = .systemPink
-      dropDown.textColor = .label
-      dropDown.rowBackgroundColor = .systemBackground
-      dropDown.selectedRowColor = .systemPink
-      dropDown.attributedPlaceholder = NSAttributedString(string: "  Arabanı Seç", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-      let leftview = UIView()
-      leftview.frame.size.width = 15
-      dropDown.leftView = leftview
-      dropDown.adjustsFontSizeToFitWidth = true
-      // The list of array to display. Can be changed dynamically
-      dropDown.optionArray = ["  Volkswagen golf", "  Mercedes c180", "  Audi a4"]
-      // Its Id Values and its optional
-      dropDown.optionIds = [1, 23, 54, 22]
-      // Image Array its optional
-      dropDown.didSelect { (selectedText, index, id) in
-         self.dropDown.text = "\(selectedText)"
-      }
+
    }
 
    //MARK: - Helper Functions
    func configureUI() {
+      configureDropDown()
       view.addSubview(titleLabel)
       titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 10)
       titleLabel.centerX(inView: view)
+
+      // Dark mode integrated
       view.backgroundColor = .systemBackground
 
       view.addSubview(titleLabel)
       titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 0)
       titleLabel.centerX(inView: view)
 
-      let stack = UIStackView(arrangedSubviews: [fullnameContainerView, dropDown, signupButton])
+      let stack = UIStackView(arrangedSubviews: [fullnameContainerView, dropDown, goInsideButton])
       stack.distribution = .fillEqually
       stack.axis = .vertical
       stack.spacing = 24
@@ -78,6 +71,26 @@ class SignupVC: UIViewController {
 
       view.addSubview(stack)
       stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
+   }
+   func configureDropDown() {
+      dropDown.arrowColor = .systemPink
+      dropDown.textColor = .label
+      dropDown.rowBackgroundColor = .systemBackground
+      dropDown.selectedRowColor = .systemPink
+      dropDown.attributedPlaceholder = NSAttributedString(string: "  Arabanı Seç", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+
+      //This adds padding to left side of dropdown textfield
+      let leftview = UIView()
+      leftview.frame.size.width = 15
+      dropDown.leftView = leftview
+      dropDown.adjustsFontSizeToFitWidth = true
+      // The list of array to display. Can be changed dynamically
+      dropDown.optionArray = ["  Volkswagen golf", "  Mercedes c180", "  Audi a4"]
+      // Its Id Values and its optional
+      //dropDown.optionIds = [1, 23, 54, 22]
+      dropDown.didSelect { (selectedText, index, id) in
+         self.dropDown.text = "\(selectedText)"
+      }
    }
 
 
